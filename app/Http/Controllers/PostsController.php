@@ -15,4 +15,15 @@ class PostsController extends Controller
     public function show(Post $post_id) {
         return view('posts.show', compact('post_id'));
     }
+
+    public function create () {
+        return view('posts.create');
+    }
+
+    public function store () {
+
+        Post::create(request(['title', 'body']));
+
+        return redirect('/posts');
+    }
 }
